@@ -2,6 +2,7 @@
 
 class SyntaxTreeNode
 {
+private:
 	virtual void print() = 0;
 };
 
@@ -12,13 +13,15 @@ private:
 
 };
 
-class Statement : public SyntaxTreeNode
-{
-
-};
-
 class Block : public SyntaxTreeNode
 {
 
 };
 
+
+class Statement : public SyntaxTreeNode
+{
+
+};
+
+class Declaration : public SyntaxTreeNode

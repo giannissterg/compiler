@@ -122,5 +122,8 @@
     <ClInclude Include="ast\abstract_syntax_tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="parser\term_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
 #pragma once
 
+#include "ast/abstract_syntax_tree.h"
+
 template<class T>
-class Operator
+class Operator : public SyntaxTreeNode
 {
 public:
 	Operator(unsigned int weight) : m_weight(weight) {}
