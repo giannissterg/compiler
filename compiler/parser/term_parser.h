@@ -10,9 +10,10 @@
 #include "parser.h"
 
 template<class T>
-class TermParser : public MapParser<std::tuple<T, std::vector<std::tuple<char, T>>>, std::vector<std::tuple<char, T> >
+class ExpressionParser2 : public MapParser<std::tuple<T, std::vector<std::tuple<char, T>>>, std::vector<std::tuple<char, T>> >
 {
-	TermParser(Parser<T>* parser, Parser<char>* operatorParser) : MapParser(
+public:
+	ExpressionParser2(Parser<T>* parser, Parser<char>* operatorParser) : MapParser<std::tuple<T, std::vector<std::tuple<char, T>>>, std::vector<std::tuple<char, T>> >(
 		new ChainParser(
 			parser,
 			new RepeatingParser(
@@ -22,11 +23,11 @@ class TermParser : public MapParser<std::tuple<T, std::vector<std::tuple<char, T
 				))
 	)) {}
 
-	std::vector<std::tuple<char, T>> map(std::tuple<T, std::vector<std::tuple<char, T>>> element)
+	std::vector<std::tuple<char, T>> map(std::tuple<T, std::vector<std::tuple<char, T>>> elements)
 	{
 		T firstOperand = std::get<0>(elements);
 		std::vector<std::tuple<char, T>> restElements = std::get<1>(elements);
-		restElements.push_back({ '+', T });
+		restElements.push_back({ '+', firstOperand });
 		std::rotate(restElements.rbegin(), restElements.rbegin() + 1, restElements.rend());
 		return restElements;
 	}

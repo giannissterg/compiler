@@ -9,6 +9,15 @@ class OneOfParser : public Parser<T>
 {
 public:
     OneOfParser(std::initializer_list<Parser<T>*> parsers) : m_parsers(parsers) {}
+    ~OneOfParser()
+    {
+        for (Parser<T>* parser : m_parsers)
+        {
+            delete parser;
+        }
+        m_parsers.clear();
+    }
+
     bool match(char element) override 
     { 
         for (Parser<T>* parser : m_parsers)

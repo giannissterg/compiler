@@ -7,6 +7,7 @@ class MapParser : public Parser<U>
 {
 public:
 	MapParser(Parser<T>* parser) : m_parser(parser) {}
+	~MapParser() { delete m_parser; }
 	bool match(char element) override{ return m_parser->match(element); }
 	std::variant<Success<U>, Failure> parse(Stream<char>& elements) override
 	{

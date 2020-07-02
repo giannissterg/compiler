@@ -1,6 +1,5 @@
 #pragma once
 
-#include "string_parser.h"
 #include "character_parser.h"
 #include "one_of_parser.h"
 

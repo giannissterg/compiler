@@ -5,11 +5,12 @@
 #include "integer_parser.h"
 #include "tree_parser.h"
 
+/*
 class ExpressionParser : public TreeParser<int>
 {
 public:
 	ExpressionParser() : TreeParser<int>(new IntegerParser()) {}
-	/*int map(std::tuple<int, std::vector<std::tuple<char, int>>> elements)
+	int map(std::tuple<int, std::vector<std::tuple<char, int>>> elements)
 	{
 		int firstOperand = std::get<0>(elements);
 		std::vector<std::tuple<char, int>> restElements = std::get<1>(elements);
@@ -49,5 +50,6 @@ public:
 			finalresult += a->execute();
 		}
 		return finalresult;
-	}*/
+	}
 };
+*/

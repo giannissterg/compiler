@@ -2,6 +2,8 @@
 
 #include <array>
 
+class Type {};
+
 class Object {};
 
 class Digit;

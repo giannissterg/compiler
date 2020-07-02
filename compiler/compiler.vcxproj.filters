@@ -125,5 +125,11 @@
     <ClInclude Include="parser\term_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="parser\boolean_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\boolean_operator_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

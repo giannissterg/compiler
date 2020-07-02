@@ -168,6 +168,8 @@
     <ClInclude Include="parser\arithmetic_operator_parser.h" />
     <ClInclude Include="parser\binary_expression_parser.h" />
     <ClInclude Include="parser\binary_parser.h" />
+    <ClInclude Include="parser\boolean_operator_parser.h" />
+    <ClInclude Include="parser\boolean_parser.h" />
     <ClInclude Include="parser\chain_parser.h" />
     <ClInclude Include="parser\character_parser.h" />
     <ClInclude Include="parser\digit_parser.h" />
