@@ -14,8 +14,13 @@ public:
     {
         m_parsers = std::make_tuple(parsers...);
     }
+    ~ChainParser()
+    {
+        std::apply([](auto&&... args) {((delete args), ...); }, m_parsers);
+    }
+
     bool match(char element) override { return match_helper(element); }
-    std::variant<Success<std::tuple<T...>>, Failure> parse(Stream<char>& inputStream) override { return parse_helper(inputStream); }
+    std::variant<Success<std::tuple<T...>>, Failure> parse(Stream<char>& inputStream) override { return parse_helper<0>(inputStream); }
 private:
     template<size_t I = 0>
     bool match_helper(char element) { return std::get<I>(m_parsers)->match(element); }

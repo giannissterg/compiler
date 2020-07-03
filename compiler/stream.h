@@ -20,7 +20,10 @@ class Stream
 public:
     Stream() : m_current(0), m_buffer() {}
     Stream(const std::vector<T>& buffer) : m_current(0), m_buffer(buffer) {}
-    void next() { m_current++; }
+    void next() { 
+        while (m_current < m_buffer.size() - 1 && (m_buffer[++m_current] == ' ' || m_buffer[m_current]  == '\n'))
+        { }
+    }
     T top() const { return m_buffer[m_current]; }
     void add(T element) { m_buffer.push_back(element); }
 

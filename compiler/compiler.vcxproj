@@ -187,11 +187,13 @@
     <ClInclude Include="parser\result.h" />
     <ClInclude Include="parser\scope_parser.h" />
     <ClInclude Include="parser\space_parser.h" />
+    <ClInclude Include="parser\assignment_parser.h" />
     <ClInclude Include="parser\string_parser.h" />
     <ClInclude Include="parser\symbol_parser.h" />
     <ClInclude Include="parser\failing_parser.h" />
     <ClInclude Include="parser\term_parser.h" />
     <ClInclude Include="parser\tree_parser.h" />
+    <ClInclude Include="parser\type_parser.h" />
     <ClInclude Include="stream.h" />
     <ClInclude Include="types\operator.h" />
     <ClInclude Include="types\type_hierarchy.h" />
