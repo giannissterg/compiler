@@ -137,5 +137,8 @@
     <ClInclude Include="parser\assignment_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ast\operator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

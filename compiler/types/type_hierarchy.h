@@ -4,19 +4,21 @@
 
 class Type {};
 
-class Object {};
+class object {};
 
-class Digit;
+class digit;
 
 template<size_t N>
-class Number
+class number
 {
 private:
-	std::array<Digit, N> m_representation;
+	std::array<digit, N> m_representation;
 };
 
-class Digit
+template<size_t Base>
+class digit
 {
+	digit()
 private:
 
 };

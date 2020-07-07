@@ -19,13 +19,13 @@ public:
         while (true)
         {
             std::variant<Success<T>, Failure> parsedElement = m_parser->parse(inputStream);
-            if (auto pval = std::get_if<0>(&parsedElement))
+            if (auto success = std::get_if<0>(&parsedElement))
             {
-                parsedElements.push_back(pval->getData());
+                parsedElements.push_back(success->getData());
             }
             else
             {
-                if (parsedElements.size()) { break; }
+                if (parsedElements.size() >= 0) { break; }
                 return Failure(Error("AAAAAAAAAAAAA"));
             }
         }

@@ -3,47 +3,45 @@
 #include "ast/abstract_syntax_tree.h"
 
 template<class T>
-class Operator : public SyntaxTreeNode
+class Operation : public SyntaxTreeNode
 {
 public:
-	Operator(unsigned int weight) : m_weight(weight) {}
-	virtual ~Operator() = default;
+	Operation() = default;
+	virtual ~Operation() = default;
 	virtual T execute() = 0;
-	unsigned int getWeight() const { return m_weight; }
 private:
-	unsigned int m_weight;
 };
 
 template <class T>
-class BinaryOperator : public Operator<T>
+class BinaryOperation : public Operation<T>
 {
 public:
-	BinaryOperator(T leftOperand, T rightOperand, unsigned int weight) : m_leftOperand(leftOperand), m_rightOperand(rightOperand), Operator<T>(weight) {}
-	virtual ~BinaryOperator() = default;
+	BinaryOperation(T leftOperand, T rightOperand) : m_leftOperand(leftOperand), m_rightOperand(rightOperand) {}
+	virtual ~BinaryOperation() = default;
 	virtual T execute() = 0;
 protected:
 	T m_leftOperand;
 	T m_rightOperand;
 };
 
-class Addition : public BinaryOperator<int>
+class Addition : public BinaryOperation<int>
 {
 public:
-	Addition(int leftOperand, int rightOperand, unsigned int priority=0) : BinaryOperator<int>(leftOperand, rightOperand, 0 + priority) {}
+	Addition(int leftOperand, int rightOperand) : BinaryOperation<int>(leftOperand, rightOperand) {}
 	int execute() override { return m_leftOperand + m_rightOperand; }
 };
 
-class Subtraction : public BinaryOperator<int>
+class Subtraction : public BinaryOperation<int>
 {
 public:
-	Subtraction(int leftOperand, int rightOperand, unsigned int priority=0) : BinaryOperator<int>(leftOperand, rightOperand, 0 + priority) {}
+	Subtraction(int leftOperand, int rightOperand) : BinaryOperation<int>(leftOperand, rightOperand) {}
 	int execute() override { return m_leftOperand - m_rightOperand; }
 };
 
 template<class T>
-class Multiplication : public BinaryOperator<int>
+class Multiplication : public BinaryOperation<int>
 {
 public:
-	Multiplication(int leftOperand, int rightOperand, unsigned int priority=0) : BinaryOperator<int>(leftOperand, rightOperand, 1 + priority) {}
+	Multiplication(int leftOperand, int rightOperand) : BinaryOperation<int>(leftOperand, rightOperand) {}
 	int execute() override { return m_leftOperand * m_rightOperand; }
 };

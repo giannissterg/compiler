@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ast\abstract_syntax_tree.h" />
+    <ClInclude Include="ast\operator.h" />
     <ClInclude Include="backend\instruction.h" />
     <ClInclude Include="backend\instruction_set_architecture.h" />
     <ClInclude Include="backend\pipeline.h" />

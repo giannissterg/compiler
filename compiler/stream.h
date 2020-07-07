@@ -15,17 +15,33 @@ template <typename> struct is_variant : std::false_type {};
 template <typename ...T> struct is_variant<std::variant<T...>> : std::true_type {};
 
 template<class T>
-class Stream
+class BaseStream
 {
 public:
-    Stream() : m_current(0), m_buffer() {}
-    Stream(const std::vector<T>& buffer) : m_current(0), m_buffer(buffer) {}
-    void next() { 
-        while (m_current < m_buffer.size() - 1 && (m_buffer[++m_current] == ' ' || m_buffer[m_current]  == '\n'))
+    virtual ~BaseStream() = 0;
+    virtual void next() = 0;
+    virtual T top() const = 0;
+protected:
+    std::vector<T> m_buffer;
+};
+
+template<class T>
+inline BaseStream<T>::~BaseStream() { }
+
+
+template<class T>
+class Stream : public BaseStream<T>
+{
+public:
+    Stream() : m_current(0) {}
+    Stream(const std::vector<T>& buffer) : m_current(0) { this->m_buffer = buffer; }
+    ~Stream() = default;
+    void next() override { 
+        while (m_current < this->m_buffer.size() - 1 && (this->m_buffer[++m_current] == ' ' || this->m_buffer[m_current]  == '\n'))
         { }
     }
-    T top() const { return m_buffer[m_current]; }
-    void add(T element) { m_buffer.push_back(element); }
+    T top() const override { return this->m_buffer[m_current]; }
+    void add(T element) { this->m_buffer.push_back(element); }
 
 
     friend std::ostream& operator<<(std::ostream& outputStream, const Stream<T>& stream)
@@ -54,7 +70,6 @@ public:
     }
 
     unsigned int size() { return m_current; }
-private:
+protected:
     unsigned int m_current;
-    std::vector<T> m_buffer;
 };

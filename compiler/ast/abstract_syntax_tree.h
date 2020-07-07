@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include "types/operator.h"
 #include "types/type_hierarchy.h"
 
@@ -21,7 +22,9 @@ class Variable : public SyntaxTreeNode
 {
 
 private:
+	std::string m_symbol; // maybe Symbol class
 	Type m_type;
+	Expression m_value;
 };
 
 class Statement : public SyntaxTreeNode
@@ -32,7 +35,7 @@ class Statement : public SyntaxTreeNode
 class Block : public SyntaxTreeNode
 {
 private:
-	std::vector<Statement> m_liveVariables;
+	std::vector<Statement> m_statements;
 };
 
 

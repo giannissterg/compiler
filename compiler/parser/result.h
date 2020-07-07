@@ -5,9 +5,15 @@
 class Error
 {
 public:
-    Error(std::string message) : m_message(message) {}
+    Error(const std::string& message) : m_message(message) {}
 private:
     std::string m_message;
+};
+
+class UnexpectedTokenError : public Error
+{
+public:
+    UnexpectedTokenError() : Error("Unexpected token found") {}
 };
 
 template <class T>

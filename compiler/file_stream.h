@@ -3,9 +3,13 @@
 #include "stream.h"
 
 template<class T>
-class FileStream : public Stream<T>
+class FileStream : public BaseStream<T>
 {
-	FileStream() : m_location({0, 0}) {}
+public:
+	FileStream(const std::string& filename) : m_location({0, 0}) 
+	{
+		//open file
+	}
 	std::pair<int, int> getLocation() const { return m_location; }
 private:
 	std::pair<int, int> m_location;
