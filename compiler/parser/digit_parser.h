@@ -1,6 +1,7 @@
 #pragma once
 
-#include "base_parser.h"
+#include <cstdint>
+#include "core/base_parser.h"
 
 // Parses digits from base 1 to base 10
 class DigitParser : public BaseParser<int>

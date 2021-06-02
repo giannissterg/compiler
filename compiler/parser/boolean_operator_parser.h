@@ -1,7 +1,8 @@
 #pragma once
 
+#include <string>
+#include "core/one_of_parser.h"
 #include "string_parser.h"
-#include "one_of_parser.h"
 
 class BooleanOperatorParser : public OneOfParser<std::string>
 {

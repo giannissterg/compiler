@@ -9,9 +9,7 @@ class IteratingParser : public Parser<std::array<T, N>>
 public:
 	IteratingParser(Parser<T>* parser) : m_parser(parser) {}
 
-    bool match(char element) override { return m_parser->match(element); }
-
-    std::variant<Success<std::array<T, N>>, Failure> parse(Stream<char>& inputStream) override
+    ParseResult<std::array<T, N>> parse(Stream<char>* inputStream) override
     {
         std::array<T, N> parsedElements;
         for (unsigned int i = 0; i < N; i++)

@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include "result.h"
-#include "base_parser.h"
+#include "parser.h"
 #include "stream.h"
+#include "../result.h"
 
 template <class T>
 class OneOfParser : public Parser<T>
@@ -18,19 +18,7 @@ public:
         m_parsers.clear();
     }
 
-    bool match(char element) override 
-    { 
-        for (Parser<T>* parser : m_parsers)
-        {
-            if (parser->match(element))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    std::variant<Success<T>, Failure> parse(Stream<char>& inputStream) override 
+    ParseResult<T> parse(Stream<char>* inputStream) override 
     { 
         T parseResult;
         for (Parser<T>* parser : m_parsers)

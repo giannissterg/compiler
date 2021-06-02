@@ -3,7 +3,7 @@
 #include "ast/abstract_syntax_tree.h"
 
 template<class T>
-class Operation : public SyntaxTreeNode
+class Operation : public AST
 {
 public:
 	Operation() = default;

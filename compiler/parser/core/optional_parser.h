@@ -9,7 +9,7 @@ class OptionalParser : public Parser<std::optional<T>>
 public:
     OptionalParser(BaseParser<T>* parser) : m_parser(parser) {}    
     bool match(char inputStream) override { return true; }
-    std::variant<Success<std::optional<T>>, Failure> parse(Stream<char>& inputStream) override
+    ParseResult<std::optional<T>> parse(Stream<char>* inputStream) override
     { 
         std::variant<Success<std::optional<T>>, Failure> parseResult;
         std::variant<Success<T>, Failure> result = m_parser->parse(inputStream);

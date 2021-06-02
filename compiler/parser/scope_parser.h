@@ -1,9 +1,9 @@
 #pragma once
 
-#include "chain_parser.h"
-#include "character_parser.h"
+#include "core/chain_parser.h"
+#include "core/character_parser.h"
 #include "map_parser.h"
-#include "optional_parser.h"
+#include "core/optional_parser.h"
 
 template <class T>
 class ScopeParser : public ChainParser<char, T, char>

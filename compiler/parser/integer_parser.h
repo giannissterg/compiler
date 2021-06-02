@@ -1,6 +1,6 @@
 #pragma once
 
-#include "parser/repeating_parser.h"
+#include "parser/core/repeating_parser.h"
 #include "parser/digit_parser.h"
 #include "parser/map_parser.h"
 

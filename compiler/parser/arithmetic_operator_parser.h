@@ -1,7 +1,7 @@
 #pragma once
 
-#include "character_parser.h"
-#include "one_of_parser.h"
+#include "core/character_parser.h"
+#include "core/one_of_parser.h"
 
 class ArithmeticOperatorParser : public OneOfParser<char>
 {

@@ -4,7 +4,7 @@
 #include <tuple>
 #include <utility>
 #include "parser.h"
-#include "result.h"
+#include "../result.h"
 
 template <class... T>
 class ChainParser : public Parser<std::tuple<T...>>
@@ -19,22 +19,18 @@ public:
         std::apply([](auto&&... args) {((delete args), ...); }, m_parsers);
     }
 
-    bool match(char element) override { return match_helper(element); }
-    std::variant<Success<std::tuple<T...>>, Failure> parse(Stream<char>& inputStream) override { return parse_helper<0>(inputStream); }
-private:
+    ParseResult<std::tuple<T...>> parse(Stream<char>* inputStream) override { return parse_helper<0>(inputStream); }
+private:    
     template<size_t I = 0>
-    bool match_helper(char element) { return std::get<I>(m_parsers)->match(element); }
-    
-    template<size_t I = 0>
-    std::variant<Success<std::tuple<T...>>, Failure> parse_helper(Stream<char>& inputStream)
+    ParseResult<std::tuple<T...>> parse_helper(Stream<char>* inputStream)
     {
         std::variant<Success<std::tuple<T...>>, Failure> parseResult;
 
         std::tuple<T...> parsedElements;
-        std::variant<Success<typename std::tuple_element<I, std::tuple<T...>>::type>, Failure> result = std::get<I>(m_parsers)->parse(inputStream);
-        if (auto pval = std::get_if<0>(&result))
+        ParseResult<typename std::tuple_element<I, std::tuple<T...>>::type>> result = std::get<I>(m_parsers)->parse(inputStream);
+        if (auto success = std::get_if<0>(&result))
         {
-            std::get<I>(parsedElements) = pval->getData();
+            std::get<I>(parsedElements) = success->getData();
         }
         else
         {

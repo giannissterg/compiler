@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "chain_parser.h"
+#include "core/chain_parser.h"
 #include "type_parser.h"
 #include "symbol_parser.h"
 #include "string_parser.h"

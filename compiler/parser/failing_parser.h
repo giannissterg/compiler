@@ -1,12 +1,12 @@
 #pragma once
 
-#include "base_parser.h"
+#include "core/base_parser.h"
 
-class FailingParser : public BaseParser<void>
+class FailingParser : public BaseParser<std::monostate>
 {
 public:
 	FailingParser() = default;
 	bool match(char element) { return false; }
-	void transform(char elements) {}
+	std::monostate transform(char elements) { return std::monostate{}; }
 private:
 };

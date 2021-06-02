@@ -5,20 +5,19 @@
 #include "types/operator.h"
 #include "types/type_hierarchy.h"
 
-class SyntaxTreeNode
+class AST
 {
+	virtual ~AST() = default;
 private:
-	//virtual void print() = 0;
+	virtual void print() = 0;
 };
 
-class Expression : public SyntaxTreeNode
+class Expression : public AST
 {
 
-private:
-	std::vector<BinaryOperator<int>> m_operations;
 };
 
-class Variable : public SyntaxTreeNode
+class Variable : public AST
 {
 
 private:
@@ -27,12 +26,12 @@ private:
 	Expression m_value;
 };
 
-class Statement : public SyntaxTreeNode
+class Statement : public AST
 {
 
 };
 
-class Block : public SyntaxTreeNode
+class Block : public AST
 {
 private:
 	std::vector<Statement> m_statements;
@@ -40,7 +39,7 @@ private:
 
 
 
-class Declaration : public SyntaxTreeNode
+class Declaration : public AST
 {
 
 };

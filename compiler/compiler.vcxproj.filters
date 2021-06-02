@@ -29,19 +29,10 @@
     <ClInclude Include="parser\result.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\character_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\repeating_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="parser\integer_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\binary_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\chain_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\scope_parser.h">
@@ -50,19 +41,10 @@
     <ClInclude Include="parser\string_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\or_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="parser\random_character_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\symbol_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\base_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\map_parser.h">
@@ -74,25 +56,13 @@
     <ClInclude Include="parser\arithmetic_operator_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\one_of_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="types\operator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\optional_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\binary_expression_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\failing_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\iterating_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\expression_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\tree_parser.h">
@@ -122,9 +92,6 @@
     <ClInclude Include="ast\abstract_syntax_tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\term_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="parser\boolean_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -138,6 +105,42 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ast\operator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\character_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\base_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\one_of_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\optional_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\or_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\chain_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\repeating_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\iterating_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\alphanumeric_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\term_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

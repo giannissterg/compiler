@@ -5,6 +5,7 @@
 #include <variant>
 #include <tuple>
 #include <utility>
+#include <sstream>
 
 template <typename> struct is_tuple : std::false_type {};
 
@@ -15,27 +16,27 @@ template <typename> struct is_variant : std::false_type {};
 template <typename ...T> struct is_variant<std::variant<T...>> : std::true_type {};
 
 template<class T>
-class BaseStream
+class Stream
 {
 public:
-    virtual ~BaseStream() = 0;
+    virtual ~Stream() = 0;
     virtual void next() = 0;
     virtual T top() const = 0;
 protected:
-    std::vector<T> m_buffer;
+    std::basic_stringstream<T> m_buffer;
 };
 
 template<class T>
-inline BaseStream<T>::~BaseStream() { }
+inline Stream<T>::~Stream() { }
 
 
 template<class T>
-class Stream : public BaseStream<T>
+class BaseStream : public Stream<T>
 {
 public:
-    Stream() : m_current(0) {}
-    Stream(const std::vector<T>& buffer) : m_current(0) { this->m_buffer = buffer; }
-    ~Stream() = default;
+    BaseStream() : m_current(0) {}
+    BaseStream(const std::vector<T>& buffer) : m_current(0) { this->m_buffer = buffer; }
+    ~BaseStream() = default;
     void next() override { 
         while (m_current < this->m_buffer.size() - 1 && (this->m_buffer[++m_current] == ' ' || this->m_buffer[m_current]  == '\n'))
         { }
@@ -44,7 +45,7 @@ public:
     void add(T element) { this->m_buffer.push_back(element); }
 
 
-    friend std::ostream& operator<<(std::ostream& outputStream, const Stream<T>& stream)
+    friend std::ostream& operator<<(std::ostream& outputStream, const BaseStream<T>& stream)
     {
         outputStream << "(";
         for (unsigned int i = stream.m_current; i < stream.m_buffer.size(); i++)

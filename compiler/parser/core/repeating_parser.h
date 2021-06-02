@@ -5,15 +5,14 @@
 #include <vector>
 #include "stream.h"
 #include "parser/result.h"
-#include "parser/parser.h"
+#include "parser/core/parser.h"
 
 template <class T>
 class RepeatingParser : public Parser<std::vector<T>>
 {
 public:
     RepeatingParser(Parser<T>* parser) : m_parser(parser) {}
-    bool match(char element) override { return m_parser->match(element);}
-    std::variant<Success<std::vector<T>>, Failure> parse(Stream<char>& inputStream) override
+    ParseResult<std::vector<T>> parse(Stream<char>* inputStream) override
     {
         std::vector<T> parsedElements;
         while (true)
@@ -26,7 +25,7 @@ public:
             else
             {
                 if (parsedElements.size() >= 0) { break; }
-                return Failure(Error("AAAAAAAAAAAAA"));
+                return std::get<1>(parsedElement);
             }
         }
         return Success(parsedElements);

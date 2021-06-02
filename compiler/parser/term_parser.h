@@ -4,11 +4,11 @@
 #include <algorithm>
 #include <tuple>
 #include <string>
-#include "chain_parser.h"
+#include "core/chain_parser.h"
+#include "core/repeating_parser.h"
+#include "core/parser.h"
 #include "arithmetic_operator_parser.h"
 #include "map_parser.h"
-#include "repeating_parser.h"
-#include "parser.h"
 #include "ast/operator.h"
 
 template<class T>
