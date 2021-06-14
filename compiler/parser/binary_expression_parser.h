@@ -5,9 +5,9 @@
 #include "string_parser.h"
 #include "arithmetic_operator_parser.h"
 
-template<class T, class U>
-class BinaryExpressionParser : public ChainParser<T, char, U>
+template<class T>
+class BinaryExpressionParser : public ChainParser<T, char, T>
 {
 public:
-	BinaryExpressionParser(Parser<T>* rightParser, Parser<U>* leftParser) : ChainParser<T, char, U>(rightParser, new ArithmeticOperatorParser(), leftParser) {}
+	BinaryExpressionParser(Parser<T>* parser) : ChainParser<T, char, T>(parser, new ArithmeticOperatorParser(), parser) {}
 };

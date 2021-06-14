@@ -6,8 +6,8 @@
 
 class BooleanParser : OneOfParser<std::string>
 {
-	BooleanParser() : OneOfParser(
+	BooleanParser() : OneOfParser({
 		new StringParser("true"),
 		new StringParser("false")
-	) {}
+		}) {}
 };

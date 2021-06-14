@@ -3,11 +3,7 @@
 #include <vector>
 #include <variant>
 #include <string>
-#include "random_character_parser.h"
-#include "core/chain_parser.h"
-#include "core/repeating_parser.h"
-#include "core/or_parser.h"
-#include "digit_parser.h"
+#include "parser.h"
 #include "map_parser.h"
 
 class SymbolParser : public MapParser<std::tuple<char, std::vector<std::variant<int, char>>>, std::string>

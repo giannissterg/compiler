@@ -38,9 +38,11 @@ private:
 template<class T>
 class ParseResult
 {
-    ParseResult(Success<T> result, Stream<char>* restInputStream) : m_result(result), m_restInputStream(restInputStream) {}
-    ParseResult(Failure result, Stream<char>* restInputStream) : m_result(result), m_restInputStream(restInputStream) {}
+public:
+    ParseResult() = default;
+    ParseResult(Success<T> result, Stream<char>* restInputStream) : result(result), m_restInputStream(restInputStream) {}
+    ParseResult(Failure result, Stream<char>* restInputStream) : result(result), m_restInputStream(restInputStream) {}
+    std::variant<Success<T>, Failure> result;
 private:
-    std::variant<Success<T>, Failure> m_result;
     Stream<char>* m_restInputStream;
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/base_parser.h"
+#include "base_parser.h"
 
 class RandomCharacterParser : public BaseParser<char>
 {

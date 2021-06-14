@@ -5,7 +5,6 @@
 #include <variant>
 #include <tuple>
 #include <utility>
-#include <sstream>
 
 template <typename> struct is_tuple : std::false_type {};
 
@@ -23,7 +22,7 @@ public:
     virtual void next() = 0;
     virtual T top() const = 0;
 protected:
-    std::basic_stringstream<T> m_buffer;
+    std::vector<T> m_buffer;
 };
 
 template<class T>

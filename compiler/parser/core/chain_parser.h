@@ -24,32 +24,31 @@ private:
     template<size_t I = 0>
     ParseResult<std::tuple<T...>> parse_helper(Stream<char>* inputStream)
     {
-        std::variant<Success<std::tuple<T...>>, Failure> parseResult;
+        ParseResult<std::tuple<T...>> parseResult;
 
         std::tuple<T...> parsedElements;
-        ParseResult<typename std::tuple_element<I, std::tuple<T...>>::type>> result = std::get<I>(m_parsers)->parse(inputStream);
-        if (auto success = std::get_if<0>(&result))
+        ParseResult<typename std::tuple_element<I, std::tuple<T...>>::type> result = std::get<I>(m_parsers)->parse(inputStream);
+        if (auto success = std::get_if<0>(&(result.result)))
         {
             std::get<I>(parsedElements) = success->getData();
         }
         else
         {
-            return Failure(Error("All wrong!"));
+            return ParseResult<std::tuple<T...>>(Failure(Error("All wrong!")), inputStream);
         }
 
         if constexpr (I + 1 != sizeof...(T)) { parseResult = parse_helper< I + 1>(inputStream); }
-        if (auto nextPval = std::get_if<0>(&parseResult))
+        if (auto nextPval = std::get_if<0>(&(parseResult.result)))
         {
             std::tuple<T...> local = nextPval->getData();
             std::get<I>(local) = std::get<I>(parsedElements);
-            parseResult = Success(local);
+            return ParseResult<std::tuple<T...>>(Success(local), inputStream);
         }
         else
         {
-            parseResult = Failure(Error("All wrong2!"));
-        }
-        
-        return parseResult;
+            return ParseResult<std::tuple<T...>>(Failure(Error("All wrong2!")), inputStream);
+        }        
     }
+
     std::tuple<Parser<T>*...> m_parsers;
 };

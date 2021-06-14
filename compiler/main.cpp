@@ -15,6 +15,9 @@
 #include "parser/assignment_parser.h"
 #include "stream.h"
 #include "file_stream.h"
+#include "parser/expression_parser.h"
+#include "parser/fix.h"
+#include "parser/recursive_parser.h"
 
 int main()
 {
@@ -31,10 +34,9 @@ int main()
 
     Stream<char>* i = new FileStream("D:\\test.ste");
 
-    auto a = new TermParser<int, std::string>(new IntegerParser(), new SymbolParser());
-    auto result = a->parse(i);
+    //auto result = a.parse(i);
     try {
-        auto b = std::get<0>(result);
+        //auto b = std::get<0>(result.result);
         std::cout << "Success" << std::endl;
         //std::cout << result << std::endl;
         std::cout << i;

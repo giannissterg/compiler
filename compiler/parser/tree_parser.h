@@ -9,14 +9,14 @@
 #include "arithmetic_operator_parser.h"
 #include "symbol_parser.h"
 #include "ast/operator.h"
+#include "result.h"
 
 template<class... T> // TermParser
 class TermParser : public Parser<std::vector<std::tuple<Operator, std::variant<T...>>>>
 {
 public:
 	TermParser(Parser<T>*... leafParsers) : m_leafParsers(new ParenthesisParser(this), leafParsers...), m_expressionParser(&m_leafParsers, new ArithmeticOperatorParser()) {}
-	bool match(char element) { return m_leafParsers.match(element); }
-	std::variant<Success<std::vector<std::tuple<Operator, std::variant<T...>>>>, Failure> parse(Stream<char>* inputStream)
+	ParseResult<std::vector<std::tuple<Operator, std::variant<T...>>>> parse(Stream<char>* inputStream)
 	{
 		std::vector<std::tuple<Operator, std::variant<T...>>> finalResult;
 

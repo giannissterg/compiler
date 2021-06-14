@@ -1,14 +1,13 @@
 #pragma once
 
 #include <optional>
-#include "base_parser.h"
+#include "parser.h"
 
 template<class T>
 class OptionalParser : public Parser<std::optional<T>>
 {
 public:
-    OptionalParser(BaseParser<T>* parser) : m_parser(parser) {}    
-    bool match(char inputStream) override { return true; }
+    OptionalParser(Parser<T>* parser) : m_parser(parser) {}    
     ParseResult<std::optional<T>> parse(Stream<char>* inputStream) override
     { 
         std::variant<Success<std::optional<T>>, Failure> parseResult;
@@ -25,5 +24,5 @@ public:
         return parseResult;
     }
 private:
-    BaseParser<T>* m_parser;
+    Parser<T>* m_parser;
 };

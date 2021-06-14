@@ -22,5 +22,3 @@ class digit
 private:
 
 };
-
-class 

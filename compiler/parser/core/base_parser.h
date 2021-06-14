@@ -17,18 +17,16 @@ public:
     virtual bool match(char element) = 0;
     ParseResult<T> parse(Stream<char>* inputStream) override
     { 
-        std::variant<Success<T>, Failure> parseResult;
         if (match(inputStream->top()))
         {
             T parsedElement = transform(inputStream->top());
             inputStream->next();
-            parseResult = Success(parsedElement);
+            return ParseResult<T>(Success(parsedElement), inputStream);
         }
         else
         {
-            parseResult = Failure(Error("Not parsed"));
+            return ParseResult<T>(Failure(Error("Not parsed")), inputStream);
         }
-        return ParseResult(parseResult);
     }
     virtual T transform(char element) = 0;
 };

@@ -41,7 +41,7 @@
     <ClInclude Include="parser\string_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\random_character_parser.h">
+    <ClInclude Include="parser\core\random_character_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\symbol_parser.h">
@@ -141,6 +141,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\term_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ast\scope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\expression_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\recursive_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\fix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\function_declaration_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\variable_declaration_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\parameter_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -23,15 +23,15 @@ public:
         T parseResult;
         for (Parser<T>* parser : m_parsers)
         {
-            std::variant<Success<T>, Failure> result = parser->parse(inputStream);
-            if (auto pval = std::get_if<0>(&result))
+            ParseResult<T> result = parser->parse(inputStream);
+            if (auto pval = std::get_if<0>(&(result.result)))
             {
                 parseResult = pval->getData();
-                return Success(parseResult);
+                return ParseResult<T>(Success(parseResult), inputStream);
             }
 
         }
-        return Failure(Error("AAAAAAAAAAAAA"));
+        return ParseResult<T>(Failure(Error("AAAAAAAAAAAAA")), inputStream);
         throw std::out_of_range("Variant did not contain matched value");
     }
 protected:

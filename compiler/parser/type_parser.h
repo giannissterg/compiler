@@ -15,3 +15,9 @@ public:
 		}
 	}
 };
+
+class CTypeParser : public TypeParser
+{
+public:
+	CTypeParser() : TypeParser({ "int", "string", "char", }) {}
+};

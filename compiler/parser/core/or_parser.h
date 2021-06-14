@@ -16,11 +16,11 @@ private:
     template<size_t I = 0>
     ParseResult<std::variant<T...>> parse_helper(Stream<char>* inputStream)
     {
-            ParseResult<typename std::tuple_element<I, std::tuple<T...>>::type>> result = std::get<I>(m_parsers)->parse(inputStream);
-            if (auto success = std::get_if<0>(&result))
+            ParseResult<typename std::tuple_element<I, std::tuple<T...>>::type> result = std::get<I>(m_parsers)->parse(inputStream);
+            if (auto success = std::get_if<0>(&(result.result)))
             {
                 std::variant<T...> finalResult = success->getData();
-                return Success(finalResult);
+                return ParseResult<std::variant<T...>>(Success(finalResult), inputStream);
             }
             else
             {
@@ -30,7 +30,7 @@ private:
                 }
                 else
                 {
-                    return Failure(Error("Nothing matched"));
+                    return ParseResult<std::variant<T...>>(Failure(Error("Nothing matched")), inputStream);
                 }
             }
     }

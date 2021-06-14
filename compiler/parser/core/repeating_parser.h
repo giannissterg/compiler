@@ -17,18 +17,18 @@ public:
         std::vector<T> parsedElements;
         while (true)
         {
-            std::variant<Success<T>, Failure> parsedElement = m_parser->parse(inputStream);
-            if (auto success = std::get_if<0>(&parsedElement))
+            ParseResult<T> parsedElement = m_parser->parse(inputStream);
+            if (auto success = std::get_if<0>(&(parsedElement.result)))
             {
                 parsedElements.push_back(success->getData());
             }
             else
             {
-                if (parsedElements.size() >= 0) { break; }
-                return std::get<1>(parsedElement);
+                if (parsedElements.size() > 0) { break; }
+                return ParseResult<std::vector<T>>(std::get<1>(parsedElement.result), inputStream);
             }
         }
-        return Success(parsedElements);
+        return ParseResult<std::vector<T>>(Success(parsedElements), inputStream);
     }
 private:
     Parser<T>* m_parser;
