@@ -1,6 +1,6 @@
 #pragma once
 
-#include "parser/integer_parser.h"
+#include "integer_parser.h"
 
 class BinaryParser : public IntegerParser
 {

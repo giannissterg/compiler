@@ -4,32 +4,32 @@
 #include <variant>
 #include <string>
 #include "parser.h"
-#include "map_parser.h"
+#include "core/map_parser.h"
 
-class SymbolParser : public MapParser<std::tuple<char, std::vector<std::variant<int, char>>>, std::string>
+class SymbolParser : public MapParser<std::tuple<char, std::vector<std::variant<char, int>>>, std::string>
 {
 public:
 	SymbolParser() : MapParser(
-		new ChainParser<char, std::vector<std::variant<int, char>>>(
+		new ChainParser<char, std::vector<std::variant<char, int>>>(
 			new RandomCharacterParser(),
-			new RepeatingParser<std::variant<int, char>>(
-				new OrParser<int, char>(
-					new DigitParser(),
-					new RandomCharacterParser()
+			new RepeatingParser<std::variant<char, int>>(
+				new OrParser<char, int>(
+					new RandomCharacterParser(),
+					new DigitParser()
 				)
 			)
 		)
 	) {}
 
-	std::string map(std::tuple<char, std::vector<std::variant<int, char>>> elements)
+	std::string map(std::tuple<char, std::vector<std::variant<char, int>>> elements)
 	{
 		std::string mappedOutput;
 
 		char firstOperand = std::get<0>(elements);
 		mappedOutput = firstOperand;
 
-		std::vector<std::variant<int, char>> restElements = std::get<1>(elements);
-		for (std::variant<int,char> element : restElements)
+		std::vector<std::variant<char, int>> restElements = std::get<1>(elements);
+		for (std::variant<char, int> element : restElements)
 		{
 			if (auto charValue = std::get_if<char>(&element))
 				mappedOutput += *charValue;

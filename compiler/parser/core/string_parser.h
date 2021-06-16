@@ -3,7 +3,7 @@
 #include <utility>
 #include <string>
 #include "result.h"
-#include "core/parser.h"
+#include "parser.h"
 
 class StringParser : public Parser<std::string>
 {

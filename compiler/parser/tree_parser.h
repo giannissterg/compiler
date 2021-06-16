@@ -2,12 +2,10 @@
 
 #include <variant>
 #include <tuple>
-#include "core/or_parser.h"
-#include "core/parser.h"
+#include "parser.h"
 #include "scope_parser.h"
 #include "term_parser.h"
 #include "arithmetic_operator_parser.h"
-#include "symbol_parser.h"
 #include "ast/operator.h"
 #include "result.h"
 

@@ -2,7 +2,7 @@
 
 #include "core/chain_parser.h"
 #include "core/character_parser.h"
-#include "map_parser.h"
+#include "core/map_parser.h"
 #include "core/optional_parser.h"
 
 template <class T>
@@ -22,11 +22,22 @@ private:
     char m_closeScopeCharacter;
 };
 
-template<class T>
+template <class T>
 class ParenthesisParser : public MapParser<std::tuple<char, T, char>, T>
 {
 public:
     ParenthesisParser(Parser<T>* parser) : MapParser<std::tuple<char, T, char>, T>(new ScopeParser<T>('(', ')', parser)) {}
+    T map(std::tuple<char, T, char> element)
+    {
+        return std::get<1>(element);
+    }
+};
+
+template <class T>
+class BlockParser : public MapParser<std::tuple<char, T, char>, T>
+{
+public:
+    BlockParser(Parser<T>* parser) : MapParser<std::tuple<char, T, char>, T>(new ScopeParser<T>('{', '}', parser)) {}
     T map(std::tuple<char, T, char> element)
     {
         return std::get<1>(element);

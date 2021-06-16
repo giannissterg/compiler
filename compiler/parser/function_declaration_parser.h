@@ -4,35 +4,53 @@
 #include <vector>
 #include "parser.h"
 #include "type_parser.h"
-#include "symbol_parser.h"
 #include "scope_parser.h"
-#include "parameter_parser.h"
+#include "variable_parser.h"
+#include "ast/function.h"
+#include "ast/variable.h"
 
-class FunctionDeclarationParser : ChainParser<std::tuple<std::string, std::string>, std::optional<std::tuple<std::tuple<std::string, std::string>, std::optional<std::vector<std::tuple<char, std::tuple<std::string, std::string>>>>>>>
+class FunctionArgumentsParser : public MapParser<std::tuple<Variable, std::vector<std::tuple<char, Variable>>>, ArgumentList>
 {
 public:
-	FunctionDeclarationParser() : ChainParser(
-		new ParameterParser(),
-		new ParenthesisParser(
-			new FunctionParametersParser()
-		)
+	FunctionArgumentsParser() : MapParser(
+		new ChainParser<Variable, std::vector<std::tuple<char, Variable>>>(
+			new VariableParser(),
+			new RepeatingParser(
+				new ChainParser<char, Variable>(
+					new CharacterParser(','),
+					new VariableParser()
+					)
+			)
+			)
 	) {}
+
+	ArgumentList map(std::tuple<Variable, std::vector<std::tuple<char, Variable>>> elements)
+	{
+		std::vector<Variable> arguments;
+
+		Variable firstArgument = std::get<0>(elements);
+		auto restArguments = std::get<1>(elements);
+
+		arguments.emplace_back(firstArgument);
+		for (auto& argument : restArguments)
+		{
+			arguments.emplace_back(std::get<1>(argument));
+		}
+		return ArgumentList(arguments);
+	}
 };
 
-class FunctionParametersParser : public OptionalParser<std::tuple<std::tuple<std::string, std::string>, std::optional<std::vector<std::tuple<char, std::tuple<std::string, std::string>>>>>>
+class FunctionDeclarationParser : public ChainParser<std::string, std::string, std::optional<ArgumentList>>
 {
 public:
-	FunctionParametersParser() : OptionalParser(
-		new ChainParser<std::tuple<std::string, std::string>, std::optional<std::vector<std::tuple<char, std::tuple<std::string, std::string>>>>>(
-			new ParameterParser(),
-			new OptionalParser<std::vector<std::tuple<char, std::tuple<std::string, std::string>>>>(
-				new RepeatingParser(
-					new ChainParser<char, std::tuple<std::string, std::string>>(
-						new CharacterParser(','),
-						new ParameterParser()
-					)
-				)
+	FunctionDeclarationParser() : ChainParser<std::string, std::string, std::optional<ArgumentList>>(
+		new CTypeParser(),
+		new SymbolParser(),
+		new ParenthesisParser<std::optional<ArgumentList>>(
+			new OptionalParser<ArgumentList>(
+				new FunctionArgumentsParser()
 			)
 		)
 	) {}
 };
+

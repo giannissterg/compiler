@@ -4,20 +4,10 @@
 #include <utility>
 #include <string>
 #include "parser/parser.h"
-#include "parser/tree_parser.h"
-#include "parser/string_parser.h"
-#include "parser/term_parser.h"
-#include "parser/scope_parser.h"
-#include "parser/symbol_parser.h"
-#include "parser/arithmetic_operator_parser.h"
-#include "parser/space_parser.h"
-#include "parser/binary_expression_parser.h"
-#include "parser/assignment_parser.h"
 #include "stream.h"
 #include "file_stream.h"
-#include "parser/expression_parser.h"
-#include "parser/fix.h"
-#include "parser/recursive_parser.h"
+#include "parser/variable_declaration_parser.h"
+#include "parser/function_declaration_parser.h"
 
 int main()
 {
@@ -34,12 +24,12 @@ int main()
 
     Stream<char>* i = new FileStream("D:\\test.ste");
 
-    //auto result = a.parse(i);
+    auto a = new FunctionDeclarationParser();
+    auto result = a->parse(i);
     try {
-        //auto b = std::get<0>(result.result);
+        auto b = std::get<0>(result.result);
         std::cout << "Success" << std::endl;
         //std::cout << result << std::endl;
-        std::cout << i;
     }
     catch (const std::bad_variant_access&) {
         std::cout << "Fuck" << std::endl;

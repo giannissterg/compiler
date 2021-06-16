@@ -8,7 +8,7 @@
 #include "core/repeating_parser.h"
 #include "core/parser.h"
 #include "arithmetic_operator_parser.h"
-#include "map_parser.h"
+#include "core/map_parser.h"
 #include "ast/operator.h"
 
 template<class T>

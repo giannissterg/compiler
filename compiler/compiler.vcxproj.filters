@@ -23,31 +23,31 @@
     <ClInclude Include="stream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\digit_parser.h">
+    <ClInclude Include="parser\core\digit_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\result.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\integer_parser.h">
+    <ClInclude Include="parser\core\integer_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\binary_parser.h">
+    <ClInclude Include="parser\core\binary_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\scope_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\string_parser.h">
+    <ClInclude Include="parser\core\string_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\core\random_character_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\symbol_parser.h">
+    <ClInclude Include="parser\core\symbol_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\map_parser.h">
+    <ClInclude Include="parser\core\map_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\space_parser.h">
@@ -137,7 +137,7 @@
     <ClInclude Include="parser\parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\alphanumeric_parser.h">
+    <ClInclude Include="parser\core\alphanumeric_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\term_parser.h">
@@ -161,7 +161,22 @@
     <ClInclude Include="parser\variable_declaration_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\parameter_parser.h">
+    <ClInclude Include="parser\variable_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ast\variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ast\function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ast\functor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types\product_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types\type_equivalence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

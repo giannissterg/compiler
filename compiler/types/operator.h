@@ -3,11 +3,11 @@
 #include "ast/abstract_syntax_tree.h"
 
 template<class T>
-class Operation : public AST
+class Operation
 {
 public:
 	Operation() = default;
-	virtual ~Operation() = default;
+	virtual ~Operation() = 0;
 	virtual T execute() = 0;
 private:
 };

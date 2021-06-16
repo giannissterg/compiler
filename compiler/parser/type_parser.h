@@ -2,7 +2,7 @@
 
 #include <string>
 #include "core/one_of_parser.h"
-#include "string_parser.h"
+#include "core/string_parser.h"
 
 class TypeParser : public OneOfParser<std::string>
 {
@@ -21,3 +21,4 @@ class CTypeParser : public TypeParser
 public:
 	CTypeParser() : TypeParser({ "int", "string", "char", }) {}
 };
+

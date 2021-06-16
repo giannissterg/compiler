@@ -1,8 +1,8 @@
 #pragma once
 
-#include "parser/core/repeating_parser.h"
-#include "parser/digit_parser.h"
-#include "parser/map_parser.h"
+#include "repeating_parser.h"
+#include "digit_parser.h"
+#include "map_parser.h"
 
 class IntegerParser : public MapParser<std::vector<int>, int>
 {

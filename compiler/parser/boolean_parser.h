@@ -2,7 +2,7 @@
 
 #include <string>
 #include "core/one_of_parser.h"
-#include "string_parser.h"
+#include "core/string_parser.h"
 
 class BooleanParser : OneOfParser<std::string>
 {

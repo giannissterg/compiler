@@ -1,8 +1,11 @@
 #pragma once
 
+#include <string>
 
+template <size_t Bits>
 class Register
 {
 private:
-	unsigned int m_id;
+	std::bitset<Bits> m_bits;
 };
+

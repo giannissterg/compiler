@@ -1,6 +1,5 @@
 #pragma once 
-#include <iostream>
-#include <variant>
+
 #include <utility>
 #include <vector>
 #include "stream.h"
@@ -24,7 +23,7 @@ public:
             }
             else
             {
-                if (parsedElements.size() > 0) { break; }
+                if (parsedElements.size() >= 0) { break; }
                 return ParseResult<std::vector<T>>(std::get<1>(parsedElement.result), inputStream);
             }
         }
