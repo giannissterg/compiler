@@ -22,8 +22,6 @@ public:
 	Function(std::string name, std::string returnType) : Variable(name, returnType), m_arguments(std::nullopt) {}
 	Function(std::string name, ArgumentList arguments, std::string returnType) : Variable(name, returnType), m_arguments(arguments) {}
 private:
-	std::string m_name;
 	std::optional<ArgumentList> m_arguments;
-	std::string m_returnType;
 };
 

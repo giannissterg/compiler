@@ -34,10 +34,10 @@ public:
 };
 
 template <class T>
-class BlockParser : public MapParser<std::tuple<char, T, char>, T>
+class CurlyBraceParser : public MapParser<std::tuple<char, T, char>, T>
 {
 public:
-    BlockParser(Parser<T>* parser) : MapParser<std::tuple<char, T, char>, T>(new ScopeParser<T>('{', '}', parser)) {}
+    CurlyBraceParser(Parser<T>* parser) : MapParser<std::tuple<char, T, char>, T>(new ScopeParser<T>('{', '}', parser)) {}
     T map(std::tuple<char, T, char> element)
     {
         return std::get<1>(element);

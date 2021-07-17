@@ -2,7 +2,7 @@
 
 #include <utility>
 #include <string>
-#include "result.h"
+#include "../result.h"
 #include "parser.h"
 
 class StringParser : public Parser<std::string>

@@ -50,7 +50,7 @@
     <ClInclude Include="parser\core\map_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\space_parser.h">
+    <ClInclude Include="parser\core\space_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\arithmetic_operator_parser.h">
@@ -62,7 +62,7 @@
     <ClInclude Include="parser\binary_expression_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\failing_parser.h">
+    <ClInclude Include="parser\core\failing_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\tree_parser.h">
@@ -92,16 +92,13 @@
     <ClInclude Include="ast\abstract_syntax_tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\boolean_parser.h">
+    <ClInclude Include="parser\core\boolean_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\boolean_operator_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\type_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\assignment_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ast\operator.h">
@@ -170,13 +167,88 @@
     <ClInclude Include="ast\function.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ast\functor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="types\product_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="types\type_equivalence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ast\type_checker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\matcher\rule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\mapper\mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\mapper\character_mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\mapper\digit_mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\mapper\vector_mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\matcher\matcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\mapper\variable_mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\core\many_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\assembler\assembler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\assembler\instruction_assembler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\assembler\bss_section.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\assembler\code_section.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\instructions\mov_instruction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\label.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate_representation\memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate_representation\memory_location.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate_representation\type_system\size_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate_representation\allocator\allocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate_representation\stack_frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="llama\llama_language.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\block_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\variable_assignment_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ast\analyzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\seperated_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\if_then_else_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,11 +5,15 @@
 template<size_t Size>
 class Instruction
 {
-	Instruction(std::bitset<Size> code) : m_code(code)
+public:
+	Instruction() = default;
+	Instruction(std::bitset<Size> code) : m_content(content)
 private:
-	std::bitset<Size> m_code;
+	std::bitset<Size> m_content;
 };
 
+
+class X86Instruction : Instruction<32> {};
 
 class AdditionInstruction : public Instruction<32>
 {

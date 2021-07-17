@@ -23,3 +23,23 @@ public:
 	}
 
 };
+
+class KotlinVariableParser : public MapParser<std::tuple<std::string, std::string, char, std::string>, Variable>
+{
+public:
+	KotlinVariableParser(const std::string& variableDeclarationKeyword, char typeAssignmentKeyword) : MapParser(
+		new ChainParser<std::string, std::string, char, std::string>(
+			new StringParser(variableDeclarationKeyword),
+			new SymbolParser(),
+			new CharacterParser(typeAssignmentKeyword),
+			new CTypeParser()
+		)
+	) {}
+
+	Variable map(std::tuple<std::string, std::string, char, std::string> variable)
+	{
+		std::string type = std::get<3>(variable);
+		std::string name = std::get<1>(variable);
+		return Variable(name, type);
+	}
+};

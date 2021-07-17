@@ -8,20 +8,13 @@
 #include "variable_parser.h"
 #include "ast/function.h"
 #include "ast/variable.h"
+#include "seperated_parser.h"
 
 class FunctionArgumentsParser : public MapParser<std::tuple<Variable, std::vector<std::tuple<char, Variable>>>, ArgumentList>
 {
 public:
 	FunctionArgumentsParser() : MapParser(
-		new ChainParser<Variable, std::vector<std::tuple<char, Variable>>>(
-			new VariableParser(),
-			new RepeatingParser(
-				new ChainParser<char, Variable>(
-					new CharacterParser(','),
-					new VariableParser()
-					)
-			)
-			)
+		new CommaSeparatedParser(new VariableParser())
 	) {}
 
 	ArgumentList map(std::tuple<Variable, std::vector<std::tuple<char, Variable>>> elements)

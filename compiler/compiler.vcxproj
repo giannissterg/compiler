@@ -158,11 +158,30 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ast\analyzer.h" />
+    <ClInclude Include="backend\assembler\assembler.h" />
+    <ClInclude Include="backend\assembler\bss_section.h" />
+    <ClInclude Include="backend\assembler\code_section.h" />
+    <ClInclude Include="backend\assembler\instruction_assembler.h" />
     <ClInclude Include="ast\abstract_syntax_tree.h" />
     <ClInclude Include="ast\function.h" />
-    <ClInclude Include="ast\functor.h" />
     <ClInclude Include="ast\scope.h" />
     <ClInclude Include="ast\operator.h" />
+    <ClInclude Include="backend\instructions\mov_instruction.h" />
+    <ClInclude Include="backend\label.h" />
+    <ClInclude Include="intermediate_representation\allocator\allocator.h" />
+    <ClInclude Include="intermediate_representation\memory.h" />
+    <ClInclude Include="intermediate_representation\memory_location.h" />
+    <ClInclude Include="intermediate_representation\stack_frame.h" />
+    <ClInclude Include="intermediate_representation\type_system\size_type.h" />
+    <ClInclude Include="llama\llama_language.h" />
+    <ClInclude Include="parser\block_parser.h" />
+    <ClInclude Include="parser\core\many_parser.h" />
+    <ClInclude Include="parser\if_then_else_parser.h" />
+    <ClInclude Include="parser\mapper\variable_mapper.h" />
+    <ClInclude Include="parser\matcher\matcher.h" />
+    <ClInclude Include="parser\matcher\rule.h" />
+    <ClInclude Include="ast\type_checker.h" />
     <ClInclude Include="backend\instruction.h" />
     <ClInclude Include="backend\instruction_set_architecture.h" />
     <ClInclude Include="backend\pipeline.h" />
@@ -174,7 +193,7 @@
     <ClInclude Include="parser\binary_expression_parser.h" />
     <ClInclude Include="parser\core\binary_parser.h" />
     <ClInclude Include="parser\boolean_operator_parser.h" />
-    <ClInclude Include="parser\boolean_parser.h" />
+    <ClInclude Include="parser\core\boolean_parser.h" />
     <ClInclude Include="parser\core\chain_parser.h" />
     <ClInclude Include="parser\core\character_parser.h" />
     <ClInclude Include="parser\core\digit_parser.h" />
@@ -189,6 +208,12 @@
     <ClInclude Include="parser\core\or_parser.h" />
     <ClInclude Include="parser\core\base_parser.h" />
     <ClInclude Include="parser\core\parser.h" />
+    <ClInclude Include="parser\mapper\character_mapper.h" />
+    <ClInclude Include="parser\mapper\digit_mapper.h" />
+    <ClInclude Include="parser\mapper\mapper.h" />
+    <ClInclude Include="parser\mapper\vector_mapper.h" />
+    <ClInclude Include="parser\seperated_parser.h" />
+    <ClInclude Include="parser\variable_assignment_parser.h" />
     <ClInclude Include="parser\variable_parser.h" />
     <ClInclude Include="parser\parser.h" />
     <ClInclude Include="parser\core\random_character_parser.h" />
@@ -196,11 +221,10 @@
     <ClInclude Include="parser\recursive_parser.h" />
     <ClInclude Include="parser\result.h" />
     <ClInclude Include="parser\scope_parser.h" />
-    <ClInclude Include="parser\space_parser.h" />
-    <ClInclude Include="parser\assignment_parser.h" />
+    <ClInclude Include="parser\core\space_parser.h" />
     <ClInclude Include="parser\core\string_parser.h" />
     <ClInclude Include="parser\core\symbol_parser.h" />
-    <ClInclude Include="parser\failing_parser.h" />
+    <ClInclude Include="parser\core\failing_parser.h" />
     <ClInclude Include="parser\term_parser.h" />
     <ClInclude Include="parser\tree_parser.h" />
     <ClInclude Include="parser\type_parser.h" />

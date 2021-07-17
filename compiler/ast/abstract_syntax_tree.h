@@ -4,35 +4,41 @@
 #include <string>
 #include "types/operator.h"
 #include "types/type_hierarchy.h"
+#include "variable.h"
+#include "scope.h"
 
-class AST
+class SyntaxNode
 {
 public:
-	virtual ~AST() = 0;
+	~SyntaxNode() = default;
 private:
 };
 
-class Expression : public AST
+class Expression : public SyntaxNode
 {
 
 };
 
-class Variable2 : public AST
+class Statement : public SyntaxNode
 {
+};
 
+class Assignment : public Statement
+{
+public:
+	Assignment(Variable variable, Value value) : m_variable(variable), m_value(value) {}
 private:
-	std::string m_symbol; // maybe Symbol class
-	std::string m_type;
-	//Expression m_value;
+	Variable m_variable;
+	Value m_value;
 };
 
-class Statement : public AST
+class Block : public SyntaxNode
 {
-
-};
-
-class Block : public AST
-{
+public:
+	Block(const std::vector<Assignment>& statements) : m_statements(statements) 
+	{
+		
+	}
 private:
-	std::vector<Statement> m_statements;
+	std::vector<Assignment> m_statements;
 };

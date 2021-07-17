@@ -43,6 +43,7 @@ public:
     ParseResult(Success<T> result, Stream<char>* restInputStream) : result(result), m_restInputStream(restInputStream) {}
     ParseResult(Failure result, Stream<char>* restInputStream) : result(result), m_restInputStream(restInputStream) {}
     std::variant<Success<T>, Failure> result;
+    Stream<char>* restInputStream() const { return m_restInputStream; }
 private:
     Stream<char>* m_restInputStream;
 };

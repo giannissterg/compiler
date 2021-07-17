@@ -4,7 +4,7 @@
 #include <variant>
 #include <string>
 #include "parser.h"
-#include "core/map_parser.h"
+#include "map_parser.h"
 
 class SymbolParser : public MapParser<std::tuple<char, std::vector<std::variant<char, int>>>, std::string>
 {
