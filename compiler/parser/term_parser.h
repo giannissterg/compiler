@@ -10,20 +10,15 @@
 #include "arithmetic_operator_parser.h"
 #include "core/map_parser.h"
 #include "ast/operator.h"
+#include "seperated_parser.h"
 
 template<class T>
 class ExpressionParser2 : public MapParser<std::tuple<T, std::vector<std::tuple<char, T>>>, std::vector<std::tuple<Operator, T>> >
 {
 public:
 	ExpressionParser2(Parser<T>* parser, Parser<char>* operatorParser) : MapParser<std::tuple<T, std::vector<std::tuple<char, T>>>, std::vector<std::tuple<Operator, T>> >(
-		new ChainParser(
-			parser,
-			new RepeatingParser(
-				new ChainParser(
-					operatorParser,
-					parser
-				))
-	)) {}
+		new SeparatedParser<T, char>(operatorParser, parser)
+	) {}
 
 	std::vector<std::tuple<Operator, T>> map(std::tuple<T, std::vector<std::tuple<char, T>>> elements)
 	{

@@ -6,7 +6,7 @@
 #include "fix.h"
 
 template <class T>
-class ExpressionParser : public OrParser<T, std::tuple<T, char, T>> {
+class ExpressionParser : public OrParser<int, std::tuple<T, char, T>> {
 public:
-	ExpressionParser(Parser<T>* parser) : OrParser<T, std::tuple<T, char, T>>(parser, new BinaryExpressionParser<T>(parser)) {}
+	ExpressionParser(Parser<T>* parser) : OrParser<int, std::tuple<T, char, T>>(new IntegerParser(), new BinaryExpressionParser<T>(parser)) {}
 };

@@ -158,7 +158,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ast\analyzer.h" />
+    <ClInclude Include="ast\expression.h" />
     <ClInclude Include="backend\assembler\assembler.h" />
     <ClInclude Include="backend\assembler\bss_section.h" />
     <ClInclude Include="backend\assembler\code_section.h" />
@@ -179,7 +179,6 @@
     <ClInclude Include="parser\core\many_parser.h" />
     <ClInclude Include="parser\if_then_else_parser.h" />
     <ClInclude Include="parser\mapper\variable_mapper.h" />
-    <ClInclude Include="parser\matcher\matcher.h" />
     <ClInclude Include="parser\matcher\rule.h" />
     <ClInclude Include="ast\type_checker.h" />
     <ClInclude Include="backend\instruction.h" />
@@ -212,13 +211,14 @@
     <ClInclude Include="parser\mapper\digit_mapper.h" />
     <ClInclude Include="parser\mapper\mapper.h" />
     <ClInclude Include="parser\mapper\vector_mapper.h" />
-    <ClInclude Include="parser\seperated_parser.h" />
+    <ClInclude Include="parser\nested_parser_optimizer.h" />
+    <ClInclude Include="parser\core\seperated_parser.h" />
+    <ClInclude Include="parser\type_definition_parser.h" />
     <ClInclude Include="parser\variable_assignment_parser.h" />
     <ClInclude Include="parser\variable_parser.h" />
     <ClInclude Include="parser\parser.h" />
     <ClInclude Include="parser\core\random_character_parser.h" />
     <ClInclude Include="parser\core\repeating_parser.h" />
-    <ClInclude Include="parser\recursive_parser.h" />
     <ClInclude Include="parser\result.h" />
     <ClInclude Include="parser\scope_parser.h" />
     <ClInclude Include="parser\core\space_parser.h" />
@@ -230,10 +230,8 @@
     <ClInclude Include="parser\type_parser.h" />
     <ClInclude Include="parser\variable_declaration_parser.h" />
     <ClInclude Include="stream.h" />
-    <ClInclude Include="types\operator.h" />
     <ClInclude Include="types\product_type.h" />
     <ClInclude Include="types\type_equivalence.h" />
-    <ClInclude Include="types\type_hierarchy.h" />
     <ClInclude Include="ast\variable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

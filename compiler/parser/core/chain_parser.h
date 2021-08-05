@@ -19,6 +19,7 @@ public:
         std::apply([](auto&&... args) {((delete args), ...); }, m_parsers);
     }
     ParseResult<std::tuple<T...>> parse(Stream<char>* inputStream) override { return parse_helper<0>(inputStream); }
+    std::tuple<Parser<T>*...> getParsers() const { return m_parsers; }
 private:    
     template<size_t I = 0>
     ParseResult<std::tuple<T...>> parse_helper(Stream<char>* inputStream)

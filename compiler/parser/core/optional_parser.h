@@ -8,7 +8,8 @@ template<class T>
 class OptionalParser : public Parser<std::optional<T>>
 {
 public:
-    OptionalParser(Parser<T>* parser) : m_parser(parser) {}    
+    OptionalParser(Parser<T>* parser) : m_parser(parser) {}
+    ~OptionalParser() { delete m_parser; }
     ParseResult<std::optional<T>> parse(Stream<char>* inputStream) override
     { 
         ParseResult<std::optional<T>> parseResult;

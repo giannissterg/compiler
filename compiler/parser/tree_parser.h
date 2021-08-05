@@ -9,7 +9,7 @@
 #include "ast/operator.h"
 #include "result.h"
 
-template<class... T> // TermParser
+template<class... T>
 class TermParser : public Parser<std::vector<std::tuple<Operator, std::variant<T...>>>>
 {
 public:

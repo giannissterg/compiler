@@ -19,7 +19,7 @@ public:
 			ParseResult<std::vector<T>> restResult = this->parse(firstResult.restInputStream());
 			if (auto restSuccess = std::get_if<0>(restResult.result))
 			{
-				finalResult.emplace(std::end(finalResult), std::begin(restSuccess->getData()), std::end(restSuccess->getData()))
+				finalResult.emplace(std::end(finalResult), std::begin(restSuccess->getData()), std::end(restSuccess->getData()));
 			}
 			return ParseResult(Success(finalResult));
 		}

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <optional>
 #include "parser.h"
 #include "type_parser.h"
 #include "scope_parser.h"
@@ -47,3 +48,40 @@ public:
 	) {}
 };
 
+class LlamaFunctionParameterParser : public OrParser<std::string, std::tuple<std::string, char, std::string>>
+{
+public:
+	LlamaFunctionParameterParser() : OrParser<std::string, std::tuple<std::string, char, std::string>>(
+		new SymbolParser(),
+		new ParenthesisParser<std::tuple<std::string, char, std::string>>(
+			new ChainParser<std::string, char, std::string>(
+				new SymbolParser(),
+				new CharacterParser(':'),
+				new CTypeParser()
+			)
+		)
+	) {}
+};
+
+class LlamaFunctionParser : public ChainParser<std::string, std::optional<std::string>, std::string, std::vector<std::variant<std::string, std::tuple<std::string, char, std::string>>>, std::optional<std::tuple<char, std::string>>, char, int>
+{
+public:
+	LlamaFunctionParser() : ChainParser<std::string, std::optional<std::string>, std::string, std::vector<std::variant<std::string, std::tuple<std::string, char, std::string>>>, std::optional<std::tuple<char, std::string>>, char, int>(
+		new StringParser("let"),
+		new OptionalParser<std::string>(
+			new StringParser("rec")
+		),
+		new SymbolParser(),
+		new RepeatingParser(
+			new LlamaFunctionParameterParser()
+		),
+		new OptionalParser(
+			new ChainParser<char, std::string>(
+				new CharacterParser(':'),
+				new CTypeParser()
+			)
+		),
+		new CharacterParser('='),
+		new IntegerParser()
+	) {}
+};

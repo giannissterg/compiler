@@ -56,9 +56,6 @@
     <ClInclude Include="parser\arithmetic_operator_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="types\operator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="parser\binary_expression_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="file_stream.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="types\type_hierarchy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="backend\register.h">
@@ -146,9 +140,6 @@
     <ClInclude Include="parser\expression_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parser\recursive_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="parser\fix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -189,9 +180,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\mapper\vector_mapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\matcher\matcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\mapper\variable_mapper.h">
@@ -242,13 +230,19 @@
     <ClInclude Include="parser\variable_assignment_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ast\analyzer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="parser\seperated_parser.h">
+    <ClInclude Include="parser\core\seperated_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser\if_then_else_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\type_definition_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ast\expression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser\nested_parser_optimizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

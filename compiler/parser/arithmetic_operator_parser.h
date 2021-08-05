@@ -14,5 +14,5 @@ public:
             new CharacterParser('-'),
             new CharacterParser('/'),
             new CharacterParser('*')
-            }) {}
+        }) {}
 };

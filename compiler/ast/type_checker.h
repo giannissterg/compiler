@@ -10,7 +10,6 @@ class TypeChecker
 {
 public:
 	virtual bool typeCheck(T type, std::string identifier) = 0;
-
 };
 
 template<class A, class B>
@@ -36,8 +35,8 @@ public:
 	SumTypeChecker(TypeChecker<A> t1, TypeChecker<B> t2) : t1(t1), t2(t2) {}
 	bool typeCheck(SumType<A, B> type, std::string identifier)
 	{
-		t1.typeCheck(first);
-		t2.typeCheck(second);
+		t1.typeCheck(type.first());
+		t2.typeCheck(type.second());
 		return true;
 	}
 private:

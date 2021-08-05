@@ -12,6 +12,7 @@
 #include "parser/block_parser.h"
 #include "ast/abstract_syntax_tree.h"
 #include "parser/type_parser.h"
+#include "parser/if_then_else_parser.h"
 
 int main()
 {
@@ -27,9 +28,9 @@ int main()
     //Stream<char> input(buffer);
 
     Stream<char>* i = new FileStream("D:\\test.ste");
+    Parser<int>* p = new IntegerParser();
     
-    auto a = new FunctionDeclarationParser();
-    auto result = a->parse(i);
+    auto result = p->parse(i);
     if (auto r = std::get_if<0>(&result.result))
     {
         // C++Program p = r->getData();
